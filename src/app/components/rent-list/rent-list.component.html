@@ -1,8 +1,8 @@
-<form>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
   <label >Specified yor search</label>
-  <input type="text" placeholder="Enter city...">
+  <input type="text" placeholder="Enter city..." formControlName="cityName" >
   <label>Country</label>
-  <select name="country" >
+  <select name="country" formControlName="selectedCountry" >
     <option value="australia">Australia</option>
     <option value="brasil">Brasil</option>
     <option value="deutschland">Deutschland</option>
@@ -13,6 +13,6 @@
     <option value="mexico">Mexico</option>
     <option value="uk">UK</option>
   </select>
-  <input type="button" value="search">
+  <button>Search</button>
 </form>
 <app-items>cool</app-items>

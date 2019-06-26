@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms' ;
 
 import { NestoriaService } from './services/nestoria-service.service';
 
@@ -9,6 +11,7 @@ import { AppComponent } from './app.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { RentListComponent } from './components/rent-list/rent-list.component';
 import { ItemsComponent } from './components/items/items.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { ItemsComponent } from './components/items/items.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [NestoriaService],

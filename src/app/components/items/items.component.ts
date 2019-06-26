@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NestoriaService } from '../../services/nestoria-service.service';
-import {Observable} from "rxjs/index";
+import {Observable} from 'rxjs/index';
 
 @Component({
   selector: 'app-items',
