@@ -12,13 +12,13 @@ export class RentListComponent implements OnInit {
   searchForm: FormGroup;
   constructor( private nestoria: NestoriaService ) {
     this.searchForm = new FormGroup({
-        cityName: new FormControl('brighton'),
+        cityName: new FormControl(''),
         selectedCountry: new FormControl('uk')
       });
   }
   ngOnInit() {
   }
   onSubmit(){
-    console.log(this.searchForm.value);
+    this.nestoria.get(this.searchForm.value);
   }
 }
