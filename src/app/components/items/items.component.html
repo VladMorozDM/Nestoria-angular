@@ -1,3 +1,6 @@
-<p>
-  items works! <ng-content></ng-content>
-</p>
+<ul>
+  <li *ngFor="let item of items | async"  >
+    <h3>{{item.title}}</h3>
+    <div>{{item.keywords}}</div>
+  </li>
+</ul>
