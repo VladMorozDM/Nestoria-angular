@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { NestoriaService } from '../../services/nestoria-service.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class RentListComponent implements OnInit {
   }
   ngOnInit() {
   }
-  onSubmit(){
+  onSubmit() {
     this.nestoria.get({
       cityName: this.searchForm.value.cityName.toLowerCase(),
       selectedCountry: this.searchForm.value.selectedCountry

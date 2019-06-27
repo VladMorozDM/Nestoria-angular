@@ -10,8 +10,8 @@ export interface ISearchData {
 
 @Injectable()
 export class NestoriaService {
-  private baseUtl = 'https://api.nestoria';
   private items$: BehaviorSubject<any> = new BehaviorSubject([]);
+  private latestResult: Array<any>;
   constructor( private http: HttpClient) {}
   private getBaseUrl(country: string ): string {
     switch ( country ) {
@@ -20,20 +20,34 @@ export class NestoriaService {
       default: return 'https://api.nestoria.' + country;
     }
   }
+
+  public getLatestResult() {
+    if( window.sessionStorage.getItem( 'latest') ) {
+      return JSON.parse( window.sessionStorage.getItem( 'latest') );
+    } else {
+      return this.latestResult;
+    }
+  }
+  public setLatestResult( result ) {
+    result.subscribe( val => {
+      this.latestResult = val;
+      window.sessionStorage.setItem( 'latest', JSON.stringify(this.latestResult) );
+    });
+  }
   public get( searchParams: ISearchData ): Observable<any> {
     this.items$.next(this.http.jsonp( this.getBaseUrl(searchParams.selectedCountry)
-      + '/api?encoding=json&pretty=1&action=search_listings&'
-      + 'country=' + searchParams.selectedCountry
-      + '&listing_type=buy&place_name='
-      + searchParams.cityName
-      , 'callback')
-      .pipe(
-        map( res => res.response.listings.map( item => {
-            item.id = `${item.latitude}${item.longitude}${item.price}`;
-            return item;
-        })
-        )
-      ));
+        + '/api?encoding=json&pretty=1&action=search_listings&'
+        + 'country=' + searchParams.selectedCountry
+        + '&listing_type=buy&place_name='
+        + searchParams.cityName
+        , 'callback')
+        .pipe(
+                map( res => res.response.listings.map( item => {
+                      item.id = `${item.latitude}${item.longitude}${item.price}`;
+                      return item;
+                    })
+                )
+        ));
     return this.items$;
   }
 }

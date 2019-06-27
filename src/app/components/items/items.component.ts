@@ -20,9 +20,10 @@ export class ItemsComponent implements OnInit, OnDestroy {
       )
       .subscribe( val => {
           this.items = val;
+          this.nestoria.setLatestResult( val );
       });
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.unsubscriber.next(0);
   }
 }

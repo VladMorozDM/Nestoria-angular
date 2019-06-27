@@ -13,9 +13,10 @@ export class ItemComponent implements OnInit {
   constructor( private router: Router) { }
 
   showDetails() {
-    this.router.navigate(['/item', this.data.id] );
+    this.router.navigate( ['/item', this.data.id] );
   }
   ngOnInit() {
+    console.log( this.data );
   }
 
 }
