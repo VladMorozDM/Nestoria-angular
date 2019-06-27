@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { RentListComponent } from './components/rent-list/rent-list.component';
 import { ItemsComponent } from './components/items/items.component';
+import { ItemComponent } from './components/items/item/item.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ItemsComponent } from './components/items/items.component';
     AppComponent,
     FavoriteComponent,
     RentListComponent,
-    ItemsComponent
+    ItemsComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

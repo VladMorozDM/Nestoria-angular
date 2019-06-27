@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject} from 'rxjs/index';
-import {map} from "rxjs/internal/operators";
+import { map } from 'rxjs/internal/operators';
 
 export interface ISearchData{
   selectedCountry: string;
