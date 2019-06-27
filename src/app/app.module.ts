@@ -12,6 +12,7 @@ import { FavoriteComponent } from './components/favorite/favorite.component';
 import { RentListComponent } from './components/rent-list/rent-list.component';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemComponent } from './components/items/item/item.component';
+import { ItemDetailsComponent } from './components/items/item-details/item-details.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ItemComponent } from './components/items/item/item.component';
     FavoriteComponent,
     RentListComponent,
     ItemsComponent,
-    ItemComponent
+    ItemComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,

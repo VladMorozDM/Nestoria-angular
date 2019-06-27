@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject} from 'rxjs/index';
 import { map } from 'rxjs/internal/operators';
 
-export interface ISearchData{
+export interface ISearchData {
   selectedCountry: string;
   cityName: string;
 }
@@ -11,22 +11,29 @@ export interface ISearchData{
 @Injectable()
 export class NestoriaService {
   private baseUtl = 'https://api.nestoria';
-  private items$: BehaviorSubject = new BehaviorSubject([]);
+  private items$: BehaviorSubject<any> = new BehaviorSubject([]);
   constructor( private http: HttpClient) {}
-  private getBaseUrl(country: string ): string{
-    switch( country ){
+  private getBaseUrl(country: string ): string {
+    switch ( country ) {
       case 'uk': return 'https://api.nestoria.co.' + country;
-      case 'br': case 'au': return 'https://api.nestoria.com.'+country;
+      case 'br': case 'au': return 'https://api.nestoria.com.' + country;
       default: return 'https://api.nestoria.' + country;
     }
   }
-  public get( searchParams: ISearchData ): Observable {
+  public get( searchParams: ISearchData ): Observable<any> {
     this.items$.next(this.http.jsonp( this.getBaseUrl(searchParams.selectedCountry)
       + '/api?encoding=json&pretty=1&action=search_listings&'
       + 'country=' + searchParams.selectedCountry
       + '&listing_type=buy&place_name='
       + searchParams.cityName
-      , 'callback').pipe( map( res => res.response.listings ) ));
+      , 'callback')
+      .pipe(
+        map( res => res.response.listings.map( item => {
+            item.id = `${item.latitude}${item.longitude}${item.price}`;
+            return item;
+        })
+        )
+      ));
     return this.items$;
   }
 }

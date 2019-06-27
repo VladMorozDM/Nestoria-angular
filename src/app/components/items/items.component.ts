@@ -15,7 +15,9 @@ export class ItemsComponent implements OnInit, OnDestroy {
   private items = [];
   ngOnInit() {
     this.nestoria.get({ selectedCountry: 'uk', cityName: 'brighton' })
-      .pipe(takeUntil(this.unsubscriber))
+      .pipe(
+        takeUntil(this.unsubscriber)
+      )
       .subscribe( val => {
           this.items = val;
       });

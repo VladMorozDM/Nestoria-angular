@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let item of items | async"  >
-    <h3>{{item.title}}</h3>
-    <div>{{item.keywords}}</div>
+    <app-item [data]="item"></app-item>
+
   </li>
 </ul>
