@@ -11,19 +11,15 @@ import { takeUntil } from 'rxjs/internal/operators';
 export class ItemsComponent implements OnInit, OnDestroy {
 
   constructor( private nestoria: NestoriaService ) { }
-  private unsubscriber: Subject<any> = new Subject();
-  private items = [];
+  private unsubscriber$: Subject<any> = new Subject();
+  private items$: Observable<any[]>;
   ngOnInit() {
-    this.nestoria.get({ selectedCountry: 'uk', cityName: 'brighton' })
-      .pipe(
-        takeUntil(this.unsubscriber)
-      )
+    this.nestoria.get().pipe( takeUntil(this.unsubscriber$) )
       .subscribe( val => {
-          this.items = val;
-          this.nestoria.setLatestResult( val );
+        this.items$ = val;
       });
   }
   ngOnDestroy() {
-    this.unsubscriber.next(0);
+    this.unsubscriber$.next(0);
   }
 }
