@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NestoriaService } from '../../services/nestoria-service.service';
 import { Observable, Subject } from 'rxjs/index';
 import { takeUntil } from 'rxjs/internal/operators';
+import { Item } from '../../models/Item';
 
 @Component({
   selector: 'app-items',
@@ -12,7 +13,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
   constructor( private nestoria: NestoriaService ) { }
   private unsubscriber$: Subject<any> = new Subject();
-  private items$: Observable<any[]>;
+  private items$: Observable<Item[]>;
   ngOnInit() {
     this.nestoria.get().pipe( takeUntil(this.unsubscriber$) )
       .subscribe( val => {

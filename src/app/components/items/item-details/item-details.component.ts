@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Location } from '@angular/common';
 import { NestoriaService } from '../../../services/nestoria-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/internal/operators';
@@ -13,7 +14,7 @@ import { Subject } from 'rxjs/index';
 export class ItemDetailsComponent implements OnInit, OnDestroy {
   private unsubscriber$: Subject<any> = new Subject();
   private data: object;
-  constructor( private nestoria: NestoriaService, private route: ActivatedRoute ) { }
+  constructor( private nestoria: NestoriaService, private route: ActivatedRoute, private location: Location ) { }
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
     this.nestoria.getLatestResult().pipe(
@@ -25,6 +26,9 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
         }
       } )
     );
+  }
+  onClick() {
+    this.location.back();
   }
   ngOnDestroy() {
     this.unsubscriber$.next(0);

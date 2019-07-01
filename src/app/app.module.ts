@@ -14,6 +14,7 @@ import { RentListComponent } from './components/rent-list/rent-list.component';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemComponent } from './components/items/item/item.component';
 import { ItemDetailsComponent } from './components/items/item-details/item-details.component';
+import {UrlService} from './services/url.service';
 
 
 
@@ -35,7 +36,7 @@ import { ItemDetailsComponent } from './components/items/item-details/item-detai
     ReactiveFormsModule
 
   ],
-  providers: [NestoriaService, FavService],
+  providers: [NestoriaService, FavService, UrlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

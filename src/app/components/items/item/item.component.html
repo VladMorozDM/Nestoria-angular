@@ -1,7 +1,13 @@
-<div (click)="showDetails()">
-  <h3>{{data.title}}</h3>
-  <div>
-    <span>{{data.price_formatted}}</span>
-    {{data.keywords}}
+<div>
+  <div (click)="showDetails()">
+    <h3>{{data.title}}</h3>
+    <div>
+      <span>{{data.priceFormatted}}</span>
+      {{data.keywords}}
+    </div>
   </div>
+  <input *ngIf="!isFavorite; else remove"  type="button" value="add to Favorite" (click)="onAdd()">
+  <ng-template #remove>
+    <input  type="button" value="remove from Favorite" (click)="onRemove()">
+  </ng-template>
 </div>

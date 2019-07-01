@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-favotite',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor() { }
+  constructor(  private location: Location ) { }
 
+  onClick() {
+    this.location.back();
+  }
   ngOnInit() {
   }
 
