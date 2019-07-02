@@ -20,9 +20,13 @@ export class NestoriaService {
                private url: UrlService
   ) {}
 
-  public getLatestResult() {
-    return of(JSON.parse( window.sessionStorage.getItem( 'latest' )) );
-  }
+  public getLatestResult( isInFaforite: boolean ) {
+    if ( isInFaforite ) {
+      return of( this.favorite.getFavoriteItems() );
+    } else {
+      return of(JSON.parse( window.sessionStorage.getItem( 'latest' )) );
+    }
+    }
   public getPages(): any[] {
     return new Array(5).fill('');
   }
