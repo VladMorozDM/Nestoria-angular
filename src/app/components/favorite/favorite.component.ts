@@ -12,6 +12,7 @@ export class FavoriteComponent implements OnInit {
 
   onClick() {
     this.location.back();
+    console.log( 'asf' );
   }
   ngOnInit() {
   }

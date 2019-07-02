@@ -15,7 +15,8 @@ export class UrlService {
     return this.getBaseUrl( searchParams.selectedCountry )
             + '/api?encoding=json&pretty=1&action=search_listings&'
             + 'country=' + searchParams.selectedCountry
-            + '&listing_type=buy&place_name='
-            + searchParams.cityName;
+            + '&listing_type=buy&place_name=' + searchParams.cityName
+            + '&number_of_results=' + searchParams.amountOfResults
+            + '&page=' + searchParams.pageNumber;
   }
 }

@@ -13,7 +13,7 @@ import {Item} from '../models/Item';
 @Injectable()
 export class NestoriaService {
   private items$: BehaviorSubject<any> = new BehaviorSubject([]);
-  private searchParams: ISearchData = { selectedCountry: 'uk', cityName: 'brighton' };
+  private searchParams: ISearchData = { selectedCountry: 'uk', cityName: 'brighton', pageNumber: 1, amountOfResults: 10 };
   constructor( private http: HttpClient,
                private route: Router,
                private favorite: FavService,
@@ -23,12 +23,15 @@ export class NestoriaService {
   public getLatestResult() {
     return of(JSON.parse( window.sessionStorage.getItem( 'latest' )) );
   }
+  public getPages(): any[] {
+    return new Array(5).fill('');
+  }
   public get( searchParams: ISearchData = this.searchParams ): BehaviorSubject<Item[]> {
-    this.searchParams = searchParams;
+    this.searchParams = { ...this.searchParams,  ...searchParams };
     if ( this.route.url === '/favorite' ) {
       this.items$.next( of(this.favorite.getFavoriteItems()) );
     } else {
-      this.items$.next( this.http.jsonp( this.url.getUrl( searchParams ), 'callback')
+      this.items$.next( this.http.jsonp( this.url.getUrl( this.searchParams ), 'callback')
         .pipe(
             map(
               res => {

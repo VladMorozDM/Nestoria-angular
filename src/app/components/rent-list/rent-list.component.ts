@@ -21,7 +21,7 @@ export class RentListComponent implements OnInit {
   onSubmit() {
     this.nestoria.get({
       cityName: this.searchForm.value.cityName.toLowerCase(),
-      selectedCountry: this.searchForm.value.selectedCountry
+      selectedCountry: this.searchForm.value.selectedCountry,
     });
   }
 }

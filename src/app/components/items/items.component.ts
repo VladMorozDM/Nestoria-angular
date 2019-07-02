@@ -13,7 +13,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
   constructor( private nestoria: NestoriaService ) { }
   private unsubscriber$: Subject<any> = new Subject();
-  private items$: Observable<Item[]>;
+  private items$: Observable<any[]>;
   ngOnInit() {
     this.nestoria.get().pipe( takeUntil(this.unsubscriber$) )
       .subscribe( val => {

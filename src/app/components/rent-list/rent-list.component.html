@@ -1,19 +1,27 @@
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-  <label >Specified yor search: </label>
-  <input type="text" placeholder="Enter city..." formControlName="cityName" >
-  <label>Country: </label>
-  <select name="country" formControlName="selectedCountry" >
-    <option value="au">Australia</option>
-    <option value="br">Brasil</option>
-    <option value="de">Deutschland</option>
-    <option value="es">Espana</option>
-    <option value="fr">France</option>
-    <option value="in">India</option>
-    <option value="it">Italia</option>
-    <option value="mx">Mexico</option>
-    <option value="uk">UK</option>
-  </select>
-  <button>Search</button>
-</form>
-<a routerLink="/favorite"> Favorite </a>
-<app-items></app-items>
+<div class="main">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label >Specified yor search: </label>
+      <input type="text" placeholder="Enter city..." formControlName="cityName" >
+    </div>
+    <div>
+      <label>Country: </label>
+      <select name="country" formControlName="selectedCountry" >
+        <option value="au">Australia</option>
+        <option value="br">Brasil</option>
+        <option value="de">Deutschland</option>
+        <option value="es">Espana</option>
+        <option value="fr">France</option>
+        <option value="in">India</option>
+        <option value="it">Italia</option>
+        <option value="mx">Mexico</option>
+        <option value="uk">UK</option>
+      </select>
+    </div>
+    <button>Search</button>
+    <a routerLink="/favorite"> Favorite </a>
+  </form>
+
+  <app-items></app-items>
+  <app-pagination ></app-pagination>
+</div>

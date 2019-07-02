@@ -15,6 +15,7 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemComponent } from './components/items/item/item.component';
 import { ItemDetailsComponent } from './components/items/item-details/item-details.component';
 import {UrlService} from './services/url.service';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 
@@ -25,7 +26,8 @@ import {UrlService} from './services/url.service';
     RentListComponent,
     ItemsComponent,
     ItemComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
