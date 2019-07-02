@@ -1,24 +1,27 @@
 <div class="main">
+
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <div>
-      <label >Specified yor search: </label>
-      <input type="text" placeholder="Enter city..." formControlName="cityName" >
+       <div class="field">
+         <label >Specify your search: </label>
+         <input type="text" placeholder="Enter city..." formControlName="cityName" >
+       </div>
+       <div class="field">
+         <label>Country: </label>
+         <select name="country" formControlName="selectedCountry" >
+           <option value="au">Australia</option>
+           <option value="br">Brasil</option>
+           <option value="de">Deutschland</option>
+           <option value="es">Espana</option>
+           <option value="fr">France</option>
+           <option value="in">India</option>
+           <option value="it">Italia</option>
+           <option value="mx">Mexico</option>
+           <option value="uk">UK</option>
+         </select>
+       </div>
+      <button>Search</button>
     </div>
-    <div>
-      <label>Country: </label>
-      <select name="country" formControlName="selectedCountry" >
-        <option value="au">Australia</option>
-        <option value="br">Brasil</option>
-        <option value="de">Deutschland</option>
-        <option value="es">Espana</option>
-        <option value="fr">France</option>
-        <option value="in">India</option>
-        <option value="it">Italia</option>
-        <option value="mx">Mexico</option>
-        <option value="uk">UK</option>
-      </select>
-    </div>
-    <button>Search</button>
     <a routerLink="/favorite"> Favorite </a>
   </form>
 
